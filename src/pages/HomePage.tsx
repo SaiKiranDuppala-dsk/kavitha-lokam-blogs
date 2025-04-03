@@ -4,6 +4,7 @@ import FeaturedPost from "@/components/FeaturedPost";
 import BlogCard from "@/components/BlogCard";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const HomePage = () => {
   const featuredPosts = getFeaturedBlogPosts();
@@ -15,6 +16,14 @@ const HomePage = () => {
   
   return (
     <div className="container mx-auto px-4 py-8">
+      <div className="absolute top-20 right-8 flex items-center gap-3 bg-white/80 backdrop-blur-sm p-2 rounded-lg shadow-md">
+        <Avatar className="h-12 w-12 border-2 border-kavitha-purple">
+          <AvatarImage src="/lovable-uploads/4d7a8028-231c-4790-97ca-9c71e516caf9.png" alt="Sai Kiran Duppala" />
+          <AvatarFallback>SKD</AvatarFallback>
+        </Avatar>
+        <span className="text-sm font-medium">Sai Kiran Duppala</span>
+      </div>
+      
       <section>
         {mainFeaturedPost && <FeaturedPost post={mainFeaturedPost} />}
       </section>

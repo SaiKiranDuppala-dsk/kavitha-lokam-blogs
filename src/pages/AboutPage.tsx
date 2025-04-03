@@ -10,9 +10,9 @@ const AboutPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <div>
           <img 
-            src="/placeholder.svg" 
+            src="/lovable-uploads/4d7a8028-231c-4790-97ca-9c71e516caf9.png" 
             alt="Sai Kiran Duppala" 
-            className="rounded-lg shadow-lg"
+            className="rounded-lg shadow-lg w-full h-auto"
           />
         </div>
         
