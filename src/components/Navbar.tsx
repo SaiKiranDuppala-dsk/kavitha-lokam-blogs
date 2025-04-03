@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   return (
     <header className="bg-white border-b border-gray-100 shadow-sm sticky top-0 z-50">
@@ -26,7 +28,9 @@ const Navbar = () => {
 
           <div className="hidden md:flex">
             <Button asChild variant="outline" className="mr-2">
-              <Link to="/admin">Admin</Link>
+              <Link to={isAuthenticated ? "/admin" : "/login"}>
+                {isAuthenticated ? "Admin Dashboard" : "Admin Login"}
+              </Link>
             </Button>
           </div>
           
@@ -71,11 +75,11 @@ const Navbar = () => {
               Contact
             </Link>
             <Link 
-              to="/admin" 
+              to={isAuthenticated ? "/admin" : "/login"}
               className="block py-2 text-gray-700 hover:bg-gray-50 rounded-md font-medium" 
               onClick={() => setIsMenuOpen(false)}
             >
-              Admin
+              {isAuthenticated ? "Admin Dashboard" : "Admin Login"}
             </Link>
           </div>
         </div>

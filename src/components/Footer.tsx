@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-kavitha-purple text-white py-8 mt-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
             <h3 className="text-xl font-serif font-semibold">Kavitha Lokam</h3>
             <p className="text-sm max-w-xs">A personal blog by Sai Kiran Duppala, dedicated to poetry, stories, and literary explorations.</p>
@@ -29,11 +29,6 @@ const Footer = () => {
               <li><a href="https://www.instagram.com/kavitha_lokam_dsk/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-kavitha-peach transition-colors">Instagram</a></li>
               <li><a href="https://www.linkedin.com/in/sai-kiran-duppala/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-kavitha-peach transition-colors">LinkedIn</a></li>
             </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Contact</h4>
-            <p className="text-sm">Phone: +91 7995038113</p>
           </div>
         </div>
         

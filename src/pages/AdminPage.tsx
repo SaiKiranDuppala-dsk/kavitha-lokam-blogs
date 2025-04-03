@@ -2,15 +2,18 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import BlogPostForm from "@/components/admin/BlogPostForm";
 import BlogPostsList from "@/components/admin/BlogPostsList";
 import { BlogPost } from "@/types/blog";
 import { getBlogPosts, getGenres } from "@/lib/data";
 import { useToast } from "@/components/ui/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
+import { LogOut } from "lucide-react";
 
 const AdminPage = () => {
   const { toast } = useToast();
+  const { logout } = useAuth();
   const [posts, setPosts] = useState<BlogPost[]>(getBlogPosts());
   const [currentPost, setCurrentPost] = useState<BlogPost | undefined>(undefined);
   const [openDialog, setOpenDialog] = useState(false);
@@ -74,10 +77,19 @@ const AdminPage = () => {
     setOpenDialog(true);
   };
   
+  const handleLogout = () => {
+    logout();
+    toast({ title: "Logged Out", description: "You have been successfully logged out." });
+  };
+  
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-serif font-bold">Admin Dashboard</h1>
+        <Button variant="outline" onClick={handleLogout} className="flex items-center gap-2">
+          <LogOut size={18} />
+          Logout
+        </Button>
       </div>
       
       <Tabs defaultValue="posts">

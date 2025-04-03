@@ -51,11 +51,6 @@ const ContactPage = () => {
           
           <div className="space-y-6">
             <div>
-              <h3 className="font-medium text-lg mb-1">Phone</h3>
-              <p className="text-gray-700">+91 7995038113</p>
-            </div>
-            
-            <div>
               <h3 className="font-medium text-lg mb-1">Social Media</h3>
               <p className="text-gray-700 mb-1">
                 Instagram: <a href="https://www.instagram.com/kavitha_lokam_dsk/" target="_blank" rel="noopener noreferrer" className="text-kavitha-purple hover:underline">@kavitha_lokam_dsk</a>
