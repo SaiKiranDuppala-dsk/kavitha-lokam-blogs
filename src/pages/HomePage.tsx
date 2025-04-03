@@ -16,19 +16,19 @@ const HomePage = () => {
   
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="absolute top-20 right-8 flex items-center gap-3 bg-white/80 backdrop-blur-sm p-2 rounded-lg shadow-md">
-        <Avatar className="h-12 w-12 border-2 border-kavitha-purple">
-          <AvatarImage src="/lovable-uploads/4d7a8028-231c-4790-97ca-9c71e516caf9.png" alt="Sai Kiran Duppala" />
-          <AvatarFallback>SKD</AvatarFallback>
-        </Avatar>
-        <span className="text-sm font-medium">Sai Kiran Duppala</span>
-      </div>
-      
       <section>
         {mainFeaturedPost && <FeaturedPost post={mainFeaturedPost} />}
       </section>
       
-      <section className="mt-16">
+      <div className="flex items-center gap-3 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-md my-8 w-fit">
+        <Avatar className="h-12 w-12 border-2 border-kavitha-purple">
+          <AvatarImage src="/lovable-uploads/4d7a8028-231c-4790-97ca-9c71e516caf9.png" alt="Sai Kiran Duppala" />
+          <AvatarFallback>SKD</AvatarFallback>
+        </Avatar>
+        <span className="text-lg font-medium">Sai Kiran Duppala</span>
+      </div>
+      
+      <section className="mt-8">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-serif font-bold">Recent Posts</h2>
           <Button asChild variant="outline">

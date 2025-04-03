@@ -1,7 +1,7 @@
-
 import { BlogPost, Genre } from "@/types/blog";
 
-export const genres: Genre[] = [
+// Data storage
+export let genres: Genre[] = [
   { id: "1", name: "Poetry", slug: "poetry" },
   { id: "2", name: "Short Stories", slug: "short-stories" },
   { id: "3", name: "Essays", slug: "essays" },
@@ -9,7 +9,7 @@ export const genres: Genre[] = [
   { id: "5", name: "Personal", slug: "personal" }
 ];
 
-export const blogPosts: BlogPost[] = [
+export let blogPosts: BlogPost[] = [
   {
     id: "1",
     title: "The Whispering Leaves",
@@ -209,4 +209,22 @@ export function getBlogPostsByGenre(genreSlug: string): BlogPost[] {
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find(post => post.slug === slug);
+}
+
+// Functions to update data (for admin functionality)
+export function updateBlogPosts(posts: BlogPost[]): void {
+  blogPosts = posts;
+}
+
+export function updateGenres(newGenres: Genre[]): void {
+  genres = newGenres;
+  
+  // Update genre references in blog posts
+  blogPosts = blogPosts.map(post => {
+    const genre = genres.find(g => g.id === post.genre.id);
+    if (genre) {
+      return { ...post, genre };
+    }
+    return { ...post, genre: genres[0] };
+  });
 }
