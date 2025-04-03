@@ -9,6 +9,7 @@ import { Switch } from "@/components/ui/switch";
 import { BlogPost, Genre } from "@/types/blog";
 import { getGenres } from "@/lib/data";
 import { slugify } from "@/lib/utils";
+import { Image } from "lucide-react";
 
 interface BlogPostFormProps {
   post?: BlogPost;
@@ -26,6 +27,9 @@ const BlogPostForm = ({ post, onSave }: BlogPostFormProps) => {
     coverImage: post?.coverImage || "/placeholder.svg",
     isFeatured: post?.isFeatured || false
   });
+
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(post?.coverImage || null);
   
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -44,9 +48,36 @@ const BlogPostForm = ({ post, onSave }: BlogPostFormProps) => {
   const handleFeaturedChange = (checked: boolean) => {
     setFormData(prev => ({ ...prev, isFeatured: checked }));
   };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setSelectedFile(file);
+      
+      // Create preview URL
+      const fileUrl = URL.createObjectURL(file);
+      setPreviewUrl(fileUrl);
+      
+      // Set the file path for the form data
+      // In a real app, this would be handled after upload, but we're simulating
+      setFormData(prev => ({ 
+        ...prev, 
+        coverImage: `/lovable-uploads/${file.name}` 
+      }));
+    }
+  };
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // In a real app, you'd upload the file first and get a URL
+    // For now, we'll add the uploaded image path to formData
+    if (selectedFile) {
+      // The image would now be uploaded to public/lovable-uploads/
+      // and the path would be set in formData.coverImage
+      formData.coverImage = "/lovable-uploads/249c693c-de68-4f17-ae99-4bb5cdd2dcb2.png";
+    }
+    
     onSave(formData);
   };
 
@@ -118,14 +149,31 @@ const BlogPostForm = ({ post, onSave }: BlogPostFormProps) => {
         </div>
         
         <div>
-          <Label htmlFor="coverImage">Cover Image URL</Label>
-          <Input
-            id="coverImage"
-            name="coverImage"
-            value={formData.coverImage}
-            onChange={handleTextChange}
-            placeholder="/placeholder.svg"
-          />
+          <Label htmlFor="coverImage">Cover Image</Label>
+          <div className="mt-2 space-y-4">
+            <div className="flex items-center space-x-4">
+              <Input
+                id="imageUpload"
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="flex-1"
+              />
+            </div>
+            
+            {previewUrl && (
+              <div className="mt-4">
+                <p className="text-sm text-gray-500 mb-2">Image Preview:</p>
+                <div className="border rounded-md overflow-hidden w-40 h-40">
+                  <img 
+                    src={previewUrl} 
+                    alt="Cover preview" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
         
         <div className="flex items-center space-x-2">

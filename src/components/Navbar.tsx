@@ -16,6 +16,12 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center">
               <h1 className="text-2xl font-serif font-bold text-kavitha-purple">Kavitha Lokam</h1>
+              <span className="mx-2 text-xl">...</span>
+              <img 
+                src="/lovable-uploads/249c693c-de68-4f17-ae99-4bb5cdd2dcb2.png" 
+                alt="Writing hand" 
+                className="h-8 w-8"
+              />
             </Link>
           </div>
           

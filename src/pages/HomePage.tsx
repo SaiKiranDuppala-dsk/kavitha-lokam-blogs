@@ -22,7 +22,7 @@ const HomePage = () => {
       
       <div className="flex items-center gap-3 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-md my-8 w-fit">
         <Avatar className="h-12 w-12 border-2 border-kavitha-purple">
-          <AvatarImage src="/lovable-uploads/4d7a8028-231c-4790-97ca-9c71e516caf9.png" alt="Sai Kiran Duppala" />
+          <AvatarImage src="/lovable-uploads/249c693c-de68-4f17-ae99-4bb5cdd2dcb2.png" alt="Sai Kiran Duppala" />
           <AvatarFallback>SKD</AvatarFallback>
         </Avatar>
         <span className="text-lg font-medium">Sai Kiran Duppala</span>
