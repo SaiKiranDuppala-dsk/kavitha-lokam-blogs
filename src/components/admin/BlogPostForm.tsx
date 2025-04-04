@@ -82,7 +82,7 @@ const BlogPostForm = ({ post, onSave }: BlogPostFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 pb-20">
       <div className="space-y-4">
         <div>
           <Label htmlFor="title">Title</Label>
@@ -186,7 +186,7 @@ const BlogPostForm = ({ post, onSave }: BlogPostFormProps) => {
         </div>
       </div>
       
-      <div className="flex justify-end">
+      <div className="flex justify-end sticky bottom-4 bg-white p-4 shadow-md rounded-md">
         <Button type="submit">
           {post ? "Update" : "Create"} Blog Post
         </Button>

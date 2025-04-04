@@ -20,7 +20,7 @@ const Navbar = () => {
               <img 
                 src="/lovable-uploads/249c693c-de68-4f17-ae99-4bb5cdd2dcb2.png" 
                 alt="Writing hand" 
-                className="h-8 w-8"
+                className="h-20 w-20"
               />
             </Link>
           </div>
