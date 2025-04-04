@@ -9,7 +9,6 @@ import { Switch } from "@/components/ui/switch";
 import { BlogPost, Genre } from "@/types/blog";
 import { getGenres } from "@/lib/data";
 import { slugify } from "@/lib/utils";
-import { Image } from "lucide-react";
 
 interface BlogPostFormProps {
   post?: BlogPost;
@@ -82,7 +81,7 @@ const BlogPostForm = ({ post, onSave }: BlogPostFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 pb-20">
+    <form onSubmit={handleSubmit} className="space-y-6 pb-28 max-h-[75vh] overflow-y-auto px-2">
       <div className="space-y-4">
         <div>
           <Label htmlFor="title">Title</Label>
@@ -125,7 +124,7 @@ const BlogPostForm = ({ post, onSave }: BlogPostFormProps) => {
             value={formData.content}
             onChange={handleTextChange}
             required
-            className="min-h-[300px] font-mono"
+            className="min-h-[200px] max-h-[400px] font-mono"
           />
         </div>
         
@@ -186,7 +185,7 @@ const BlogPostForm = ({ post, onSave }: BlogPostFormProps) => {
         </div>
       </div>
       
-      <div className="flex justify-end sticky bottom-4 bg-white p-4 shadow-md rounded-md">
+      <div className="flex justify-end sticky bottom-0 left-0 right-0 bg-white p-4 shadow-md rounded-md">
         <Button type="submit">
           {post ? "Update" : "Create"} Blog Post
         </Button>

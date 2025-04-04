@@ -185,8 +185,8 @@ const AdminPage = () => {
       </Tabs>
       
       <Dialog open={openPostDialog} onOpenChange={setOpenPostDialog}>
-        <DialogContent className="max-w-3xl">
-          <DialogHeader>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-hidden p-0">
+          <DialogHeader className="p-6 pb-2">
             <DialogTitle>{currentPost ? "Edit" : "Create"} Blog Post</DialogTitle>
             <DialogDescription>
               Fill in the details for your blog post. Fields marked with * are required.
