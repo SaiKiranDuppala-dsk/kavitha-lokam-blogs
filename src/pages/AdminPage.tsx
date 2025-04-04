@@ -26,7 +26,7 @@ const AdminPage = () => {
   const [openPostDialog, setOpenPostDialog] = useState(false);
   const [openGenreDialog, setOpenGenreDialog] = useState(false);
   
-  const handleSavePost = (postData: Partial<BlogPost>) => {
+  const handleSavePost = (postData: Partial<BlogPost> & { genreId?: string }) => {
     const genre = genres.find(g => g.id === postData.genreId) || genres[0];
     
     if (currentPost) {

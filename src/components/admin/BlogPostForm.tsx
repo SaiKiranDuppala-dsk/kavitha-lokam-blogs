@@ -18,12 +18,12 @@ interface BlogPostFormProps {
 
 const BlogPostForm = ({ post, onSave }: BlogPostFormProps) => {
   const genres = getGenres();
-  const [formData, setFormData] = useState<Partial<BlogPost>>({
+  const [formData, setFormData] = useState<Partial<BlogPost> & { genreId?: string }>({
     title: post?.title || "",
     slug: post?.slug || "",
     excerpt: post?.excerpt || "",
     content: post?.content || "",
-    genreId: post?.genre.id || genres[0].id,
+    genreId: post?.genre?.id || genres[0].id,
     coverImage: post?.coverImage || "/placeholder.svg",
     isFeatured: post?.isFeatured || false
   });
